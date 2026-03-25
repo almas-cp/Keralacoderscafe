@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Chilanka&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -137,5 +138,17 @@
 
 .animate-float-slow {
   animation: float-slow 7s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.chilanka-regular {
+  font-family: "Chilanka", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 

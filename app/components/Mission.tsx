@@ -30,7 +30,10 @@ export default function Mission() {
             </span>
             <h2 className="mt-5 max-w-[820px] text-[clamp(2.8rem,7vw,5.8rem)] font-black leading-[0.92] tracking-[-0.05em] text-black uppercase">
               A community that feels
-              <span className="ml-3 bg-white border-3 border-black px-3 py-1 shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] inline-block -rotate-1">
+              <span
+                className="ml-3 border-3 border-black px-3 py-1 shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] inline-block -rotate-1 animate-[gradientShift_4s_ease_infinite] bg-[length:200%_100%]"
+                style={{ backgroundImage: "linear-gradient(90deg, #FFE66D, #A8E6CF, #FFE66D)" }}
+              >
                 generous,
               </span>
               <br />

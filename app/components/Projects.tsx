@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 const projects = [
   {
     title: "Kerala Dev Directory",
@@ -25,12 +29,48 @@ const projects = [
   },
 ];
 
+function useInView(threshold = 0.15) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return { ref, visible };
+}
+
 export default function Projects() {
+  const heading = useInView(0.2);
+  const cards = useInView(0.1);
+
   return (
     <section id="projects" className="px-6 py-28 md:px-12 bg-white border-t-4 border-black">
       <div className="mx-auto max-w-[1280px]">
         <div className="grid gap-20 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
-          <div className="lg:sticky lg:top-32 lg:self-start">
+          <div
+            ref={heading.ref}
+            className="lg:sticky lg:top-32 lg:self-start"
+            style={{
+              opacity: heading.visible ? 1 : 0,
+              transform: heading.visible ? "translateX(0)" : "translateX(-40px)",
+              transition: "opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1)",
+            }}
+          >
             <span className="inline-block border-2 border-black bg-kcc-gold px-3 py-1 text-xs font-black uppercase tracking-widest shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] mb-6">
               Projects
             </span>
@@ -56,11 +96,16 @@ export default function Projects() {
             </div>
           </div>
 
-          <div className="grid gap-6">
+          <div ref={cards.ref} className="grid gap-6">
             {projects.map((project, index) => (
               <article
                 key={project.title}
                 className="border-4 border-black bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]"
+                style={{
+                  opacity: cards.visible ? 1 : 0,
+                  transform: cards.visible ? "translateY(0) rotate(0deg)" : "translateY(60px) rotate(2deg)",
+                  transition: `opacity 0.6s cubic-bezier(.22,1,.36,1) ${index * 0.15}s, transform 0.6s cubic-bezier(.22,1,.36,1) ${index * 0.15}s`,
+                }}
               >
                 <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
                   <div className="flex items-start gap-6">

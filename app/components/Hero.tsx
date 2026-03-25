@@ -1,43 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import { type MouseEvent, useRef } from "react";
 import { ArrowUpRight, Github, MessageCircle } from "lucide-react";
+import ColourfulText from "./ColourfulText";
 
 const highlights = [
   "From 1-day beginners to 10+ years experienced developers",
   "Open source, meetups, peer learning, and real collaboration",
 ];
 
-const noteLines = [
-  "learn out loud",
-  "build with others",
-  "share what you know",
+const topContributors = [
+  { name: "Akhil", initial: "AK", color: "bg-kcc-accent", rotation: "rotate-[-2deg]" },
+  { name: "Shan", initial: "SH", color: "bg-kcc-green", rotation: "rotate-[1deg]" },
+  { name: "Akshay", initial: "AS", color: "bg-kcc-gold", rotation: "rotate-[-1deg]" },
+  { name: "Arjun", initial: "AR", color: "bg-[#C8B6FF]", rotation: "rotate-[2deg]" },
 ];
 
 export default function Hero() {
-  const noteRef = useRef<HTMLDivElement | null>(null);
 
-  function handleNoteMove(event: MouseEvent<HTMLDivElement>) {
-    const element = noteRef.current;
-    if (!element) return;
-
-    const rect = element.getBoundingClientRect();
-    const offsetX = (event.clientX - rect.left) / rect.width - 0.5;
-    const offsetY = (event.clientY - rect.top) / rect.height - 0.5;
-
-    element.style.transform =
-      `perspective(1200px) rotateX(${(-offsetY * 9).toFixed(2)}deg) ` +
-      `rotateY(${(offsetX * 11).toFixed(2)}deg) translateY(-6px)`;
-  }
-
-  function resetNote() {
-    const element = noteRef.current;
-    if (!element) return;
-
-    element.style.transform =
-      "perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(0px)";
-  }
 
   return (
     <header className="relative overflow-hidden px-6 pb-20 pt-32 md:px-12 lg:pb-28 lg:pt-48 bg-white border-b-4 border-black">
@@ -55,21 +35,24 @@ export default function Hero() {
               </span>
 
               <h1 className="mt-2 max-w-[850px] text-[clamp(3.5rem,10vw,7.5rem)] font-black leading-[0.88] tracking-[-0.05em] text-black uppercase">
-                Kerala <br className="hidden sm:block" />
+                <ColourfulText text="Kerala" /> <br className="hidden sm:block" />
                 Coders
                 <span className="ml-2 bg-kcc-gold px-4 py-2 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] sm:ml-4 inline-block -rotate-2">
                   Cafe
                 </span>
               </h1>
 
-              <p className="mt-12 max-w-[640px] text-[1.2rem] font-bold leading-relaxed text-black sm:text-[1.35rem] border-l-8 border-black pl-6">
+              <p
+                className="mt-12 max-w-[640px] text-[1.2rem] font-bold leading-relaxed text-black sm:text-[1.35rem] border-4 border-black p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] animate-[gradientShift_5s_ease_infinite] bg-[length:200%_100%]"
+                style={{ backgroundImage: "linear-gradient(90deg, #FFE66D, #A5FFD6, #FFE66D)" }}
+              >
                 A vibrant community of developers, designers, and tech
                 enthusiasts from Kerala. Building the future, one commit at a
                 time.
               </p>
             </div>
 
-            <div className="mt-12 flex flex-wrap gap-4 animate-fade-in-up delay-200">
+            <div className="mt-12 hidden flex-wrap gap-4 animate-fade-in-up delay-200 md:flex">
               {highlights.map((item) => (
                 <div
                   key={item}
@@ -114,64 +97,94 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-[520px] animate-fade-in delay-200">
-            <div className="relative pt-8">
-              <div className="absolute left-1/2 top-0 z-20 h-10 w-32 -translate-x-1/2 rotate-[-6deg] border-3 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center font-black uppercase text-xs tracking-widest">
-                IMPORTANT!
+          {/* ─── NEWSPAPER + STAMP COLLECTION ─── */}
+          <div className="relative mx-auto w-full max-w-[520px] animate-fade-in delay-200 flex flex-col gap-6 lg:self-start">
+
+
+
+
+            {/* ── Top Contributors – Stamp Collection ── */}
+            <div className="relative border-4 border-black bg-[#F5F0E1] p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] -rotate-1 sm:p-8"
+              style={{
+                backgroundImage:
+                  "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+              }}
+            >
+              {/* Header label */}
+              <div className="flex items-center justify-between mb-6">
+                <div className="border-2 border-black bg-white px-3 py-1 text-[0.6rem] font-black uppercase tracking-[0.3em] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                  Top Contributors
+                </div>
+                <div className="text-[0.55rem] font-bold uppercase tracking-[0.2em] text-black/30">
+                  Stamp Collection
+                </div>
               </div>
 
-              <div className="animate-float-gentle">
-                <div
-                  ref={noteRef}
-                  onMouseMove={handleNoteMove}
-                  onMouseLeave={resetNote}
-                  className="relative border-4 border-black bg-kcc-gold p-8 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-transform duration-200 ease-out will-change-transform sm:p-10 rotate-1"
-                  style={{
-                    transform:
-                      "perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(0px)",
-                  }}
-                >
-                  <div className="relative">
-                    <p className="text-[0.8rem] font-black uppercase tracking-[0.2em] text-black underline decoration-4 decoration-white">
-                      A note from kcc
-                    </p>
-
-                    <div className="mt-8 font-black uppercase text-[2.5rem] leading-[0.95] text-black sm:text-[3rem]">
-                      <div>Hey builder,</div>
-                      <div className="mt-4 bg-white border-3 border-black px-4 py-2 inline-block -rotate-1 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-                        come hang out
-                      </div>
-                      <div className="mt-4">with people who</div>
-                      <div className="text-kcc-accent">actually share.</div>
-                    </div>
-
-                    <div className="mt-10 space-y-4 font-bold uppercase text-[1.1rem] text-black">
-                      {noteLines.map((line) => (
-                        <div key={line} className="flex items-center gap-4">
-                          <span className="h-4 w-4 border-2 border-black bg-white flex-shrink-0" />
-                          <span>{line}</span>
+              {/* Stamp Grid */}
+              <div className="grid grid-cols-2 gap-5 sm:gap-6">
+                {topContributors.map((person) => (
+                  <div
+                    key={person.name}
+                    className={`group relative ${person.rotation} transition-all duration-200 hover:rotate-0 hover:scale-105`}
+                  >
+                    {/* Stamp outer — perforated edge effect */}
+                    <div className="relative border-4 border-black bg-white p-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                      style={{
+                        backgroundImage:
+                          "radial-gradient(circle, transparent 40%, #000 41%, #000 44%, transparent 45%)",
+                        backgroundSize: "10px 10px",
+                        backgroundPosition: "-5px -5px",
+                      }}
+                    >
+                      {/* Inner stamp content */}
+                      <div className={`relative border-2 border-black ${person.color} px-3 py-4 text-center`}>
+                        {/* Stamp value */}
+                        <div className="absolute top-1 right-2 text-[0.55rem] font-black text-black/30">
+                          ₹0.00
                         </div>
-                      ))}
-                    </div>
 
-                    <div className="mt-12 flex items-center justify-between gap-4 border-t-3 border-black pt-6">
-                      <div className="font-black uppercase text-[1rem] text-black">
-                        SEE YOU SOON!
-                      </div>
-                      <div className="border-2 border-black bg-white px-4 py-2 text-xs font-black uppercase shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
-                        700+ DEVS • 30+ CONTRIBS
+                        {/* Avatar circle */}
+                        <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center border-3 border-black bg-white font-black text-xl text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,0.15)]">
+                          {person.initial}
+                        </div>
+
+                        {/* Name */}
+                        <div className="font-black uppercase text-[0.85rem] tracking-wide text-black leading-none">
+                          {person.name}
+                        </div>
+
+                        {/* Country / Role label */}
+                        <div className="mt-1.5 text-[0.5rem] font-bold uppercase tracking-[0.25em] text-black/40">
+                          Kerala &bull; Dev
+                        </div>
+
+                        {/* Decorative postmark circle (visible on hover) */}
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                          <div className="h-16 w-16 rounded-full border-[3px] border-dashed border-kcc-accent/60 flex items-center justify-center rotate-[-20deg]">
+                            <div className="text-[0.5rem] font-black uppercase text-kcc-accent/60 leading-none text-center">
+                              KCC<br />Approved
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                ))}
               </div>
 
-              <div className="absolute -bottom-10 -right-6 border-3 border-black bg-kcc-green p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rotate-3 hidden sm:block">
-                <div className="font-black uppercase text-[1.5rem] leading-none text-black">
-                  Built with
+              {/* +30 Contributors label */}
+              <div className="mt-6 flex items-center justify-center gap-3">
+                <div className="h-[2px] flex-1 bg-black/15" />
+                <div className="border-3 border-black bg-kcc-gold px-4 py-2 font-black uppercase text-sm text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all cursor-pointer">
+                  +30 Contributors
                 </div>
-                <div className="mt-2 text-sm font-bold uppercase tracking-wide text-black/60">
-                  CARE • CODE • COMMUNITY
+                <div className="h-[2px] flex-1 bg-black/15" />
+              </div>
+
+              {/* Vintage postmark decoration */}
+              <div className="absolute -top-3 -left-3 h-10 w-10 border-3 border-black bg-kcc-accent flex items-center justify-center rotate-12 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hidden sm:flex">
+                <div className="text-[0.55rem] font-black text-white leading-none text-center">
+                  TOP<br />4
                 </div>
               </div>
             </div>

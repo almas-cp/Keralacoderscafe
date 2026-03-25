@@ -92,36 +92,36 @@ export default function Contributors() {
                   href={contributor.html_url}
                   target="_blank"
                   rel="noopener"
-                  className={`group border-4 border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] ${
+                  className={`group border-4 border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] overflow-hidden ${
                     accentClasses[index % accentClasses.length]
                   }`}
                 >
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="relative h-20 w-20 overflow-hidden border-3 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="relative h-16 w-16 shrink-0 overflow-hidden border-3 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                       <Image
                         src={contributor.avatar_url}
                         alt={contributor.login}
                         fill
                         className="object-cover transition duration-300 group-hover:scale-110"
-                        sizes="80px"
+                        sizes="64px"
                       />
                     </div>
 
-                    <div className="border-2 border-black bg-white px-3 py-1 text-xs font-black uppercase tracking-widest shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+                    <div className="shrink-0 border-2 border-black bg-white px-3 py-1 text-xs font-black uppercase tracking-widest shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
                       #{String(index + 1).padStart(2, "0")}
                     </div>
                   </div>
 
-                  <div className="mt-8">
-                    <h3 className="text-[1.8rem] font-black uppercase tracking-[-0.04em] text-black">
+                  <div className="mt-5 min-w-0">
+                    <h3 className="text-[1.2rem] sm:text-[1.4rem] font-black uppercase tracking-[-0.04em] text-black truncate">
                       {contributor.login}
                     </h3>
-                    <p className="mt-3 text-sm font-bold leading-relaxed text-black/70 uppercase">
+                    <p className="mt-2 text-xs font-bold leading-relaxed text-black/70 uppercase">
                       {contributor.contributions} CONTRIBS
                     </p>
                   </div>
 
-                  <div className="mt-8 inline-flex items-center gap-2 border-b-2 border-black text-xs font-black uppercase text-black">
+                  <div className="mt-5 inline-flex items-center gap-2 border-b-2 border-black text-xs font-black uppercase text-black">
                     GITHUB PROFILE
                     <ArrowUpRight className="h-4 w-4 stroke-[3]" />
                   </div>

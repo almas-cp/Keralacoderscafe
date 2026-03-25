@@ -138,6 +138,11 @@ export default function RootLayout({
       className={`${newsreader.variable} ${manrope.variable} ${instrumentSerif.variable} ${caveat.variable} h-full`}
     >
       <head>
+        {/* Google Fonts: Chilanka */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Chilanka&display=swap" rel="stylesheet" />
+
         {/* Google Icons */}
         <link
           rel="stylesheet"
