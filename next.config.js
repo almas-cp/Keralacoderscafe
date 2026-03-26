@@ -5,15 +5,17 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "avatars.githubusercontent.com",
-        pathname: "/u/**",
+        port: "",
+        pathname: "/**",
       },
       {
         protocol: "https",
         hostname: "res.cloudinary.com",
-        pathname: "/ddtpurhae/**",
+        port: "",
+        pathname: "/**",
       },
     ],
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
