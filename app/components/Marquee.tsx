@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import { Star } from "lucide-react";
 import { communityQuotes } from "./data";
 
 type MarqueeProps = {
@@ -31,7 +32,7 @@ const Marquee: React.FC<MarqueeProps> = ({ quotes = communityQuotes }) => {
   }, [quotes]);
 
   return (
-    <div className="relative overflow-hidden bg-kcc-gold border-y-4 border-black py-6 z-20 -rotate-[6deg] scale-[1.05] my-20 shadow-[0_12px_0_0_#000]">
+    <div className="relative overflow-hidden bg-black border-y-4 border-black py-4 z-20 -rotate-[2deg] scale-[1.05] my-20 shadow-[0_8px_0_0_#000]">
       <div
         id="quotes"
         className="w-max whitespace-nowrap flex will-change-transform"
@@ -42,10 +43,10 @@ const Marquee: React.FC<MarqueeProps> = ({ quotes = communityQuotes }) => {
             {quotes.map((quote, index) => (
               <span
                 key={`${set}-${index}`}
-                className="flex items-center gap-12 text-3xl md:text-5xl font-headline italic tracking-tight text-black lowercase px-6"
+                className="flex items-center gap-12 text-3xl md:text-5xl font-black tracking-tighter text-kcc-gold uppercase px-6"
               >
                 {quote}
-                <span className="text-3xl text-black/50">✦</span>
+                <Star className="w-8 h-8 md:w-12 md:h-12 fill-kcc-gold text-kcc-gold" />
               </span>
             ))}
           </div>
