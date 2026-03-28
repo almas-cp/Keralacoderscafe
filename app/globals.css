@@ -110,6 +110,17 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  .neo-brutalist-grid {
+    background-image: radial-gradient(#000000 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-attachment: fixed;
+  }
+
+  .halftone-texture {
+    background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
+    background-size: 4px 4px;
+  }
 }
 
 @keyframes fadeInUp {

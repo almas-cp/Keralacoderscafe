@@ -7,10 +7,10 @@ import KccCupMark from "./KccCupMark";
 
 const navLinks = [
   { name: "Home", href: "/", type: "scroll" },
+  { name: "Events", href: "/events", type: "link" },
   { name: "Contributors", href: "/#contributors", type: "scroll" },
   { name: "Projects", href: "/#projects", type: "scroll" },
   { name: "Community", href: "/#about", type: "scroll" },
-  { name: "Guidelines", href: "/#guidelines", type: "scroll" },
 ];
 
 export default function NavBar() {
