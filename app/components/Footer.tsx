@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { Github, MessageCircle } from "lucide-react";
+import { useLenis } from "lenis/react";
 
 const quickLinks = [
   { label: "About", href: "#about" },
@@ -22,6 +25,16 @@ const resources = [
 ];
 
 export default function Footer() {
+  const lenis = useLenis();
+
+  const handleQuickLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault();
+    lenis?.scrollTo(href, { duration: 1.5 });
+  };
+
   return (
     <footer className="px-6 pb-20 pt-10 md:px-12 bg-white">
       <div className="mx-auto max-w-[1280px] border-4 border-black bg-white px-8 py-16 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] md:px-16">
@@ -50,13 +63,14 @@ export default function Footer() {
             </div>
             <div className="flex flex-col gap-4">
               {quickLinks.map((link) => (
-                <Link
+                <a
                   key={link.label}
                   href={link.href}
-                  className="text-[1.1rem] font-black uppercase text-black hover:text-kcc-accent transition-all hover:translate-x-2"
+                  onClick={(e) => handleQuickLinkClick(e, link.href)}
+                  className="text-[1.1rem] font-black uppercase text-black hover:text-kcc-accent transition-all hover:translate-x-2 cursor-pointer"
                 >
                   {link.label}
-                </Link>
+                </a>
               ))}
             </div>
           </div>
