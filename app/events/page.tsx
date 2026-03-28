@@ -183,25 +183,7 @@ export default function EventsPage() {
         </section>
       </main>
 
-      {/* Mobile Bottom Nav */}
-      <nav className="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-[#fef9ea] text-black font-black uppercase text-[10px] tracking-widest border-t-4 border-black md:hidden">
-        <Link className="flex flex-col items-center justify-center text-black p-2 hover:bg-[#FF6B6B] transition-colors" href="/">
-          <span className="material-symbols-outlined">home</span>
-          Home
-        </Link>
-        <Link className="flex flex-col items-center justify-center bg-[#6dfe9c] text-black border-2 border-black p-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] translate-x-[2px] translate-y-[2px] shadow-none" href="/events">
-          <span className="material-symbols-outlined">calendar_month</span>
-          Events
-        </Link>
-        <Link className="flex flex-col items-center justify-center text-black p-2 hover:bg-[#FF6B6B] transition-colors" href="#">
-          <span className="material-symbols-outlined">history</span>
-          Archive
-        </Link>
-        <Link className="flex flex-col items-center justify-center text-black p-2 hover:bg-[#FF6B6B] transition-colors" href="/join">
-          <span className="material-symbols-outlined">group_add</span>
-          Join
-        </Link>
-      </nav>
+
     </div>
   );
 }
